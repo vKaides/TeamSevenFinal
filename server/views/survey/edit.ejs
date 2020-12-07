@@ -1,0 +1,71 @@
+<!--
+    Author: Author: Hong Viet
+    Team: Team Seven
+    Course: COMP229 - Fall 2020
+    Purpose: Team Project - Survey Site  
+-->
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+<!-- Content for the Add Survey Page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-11">
+            <h1><%= title %></h1>
+            <form class="form" method="POST">
+                <!-- Text Field for Name -->
+                <div class="form-group">
+                    <label for="nameTextField">Name of Surveyor</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="nameTextField"
+                    placeholder="Enter your Name"
+                    name="Name"
+                    value="<%= survey.Name %>"
+                    required>
+                </div>
+
+                <!-- Text Field for Desceription -->
+                <div class="form-group">
+                    <label for="descriptionTextField">Description</label>
+                    <textarea 
+                    type="text" 
+                    class="form-control" 
+                    id="descriptionTextField"
+                    placeholder="Enter the Description"
+                    name="Description"
+                    required><%= survey.Description %></textarea>
+                </div>
+
+                <!-- Text Field for Published Date -->
+                <div class="form-group">
+                    <label for="publishedTextField">Published Date</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="publishedTextField"
+                    placeholder="Enter the Published Date(Today's Date)"
+                    name="Published"
+                    value="<%= survey.Published %>"
+                    required>
+                </div>
+
+                <!-- Button to submit the Survey -->
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit
+                </button>
+                <!-- Button to cancel the submission of the survey -->
+                <a href="/survey-list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>
+

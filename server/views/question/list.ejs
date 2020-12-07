@@ -1,0 +1,71 @@
+<!--
+    Author: Author: Hong Viet
+    Team: Team Seven
+    Course: COMP229 - Fall 2020
+    Purpose: Team Project - Survey Site  
+-->
+<!-- COMMENT -->
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+  
+
+<!--  Main Content -->
+  <main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-11">
+            <h1 class="display-4">Welcome to the Question List page</h1>
+            <h3>Question List</h3>
+            <%if(typeof displayName == "string" && displayName){ %>
+            <a href="/question-list/add" class="btn btn-primary" role="button">
+            <i class="fas fa-plus-circle"></i> Add a question</a>
+            <% }%>
+            <br>
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row-->
+                <tr class="d-flex">
+                    <%if(typeof displayName == "string" && displayName){ %>
+                    <th class="text-center col-2">Question</th>
+                    <th class="text-center col-2">Answer</th>
+                    <th class="text-center col-1"></th>
+                    <th class="text-center col-1"></th>
+                    <% } else {%>
+                         <th class="text-center col-2">Question</th>
+                    <th class="text-center col-2">Answer</th>
+                    <% } %>
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <% for(let count = 0; count < QuestionList.length; count++) { %>
+                    <tr class="d-flex">
+                        <%if(typeof displayName == "string" && displayName){ %>
+                        <td class="text-center col-2"><%= QuestionList[count].question %></td>
+                        <td class="text-center col-2"><%= QuestionList[count].answer %></td>
+                        <td class="text-center col-1">
+                            <a href="/question-list/edit/<%= QuestionList[count]._id %>" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i>Edit</a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/question-list/delete/<%= QuestionList[count]._id %>" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i>Delete</a>
+                        </td>
+                        <% } else{%>
+                            <td class="text-center col-2"><%= QuestionList[count].question %></td>
+                        <td class="text-center col-2"><%= QuestionList[count].answer %></td>
+                        <% }%>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+
+  
+<%- include ../partials/bottom_nav.ejs %>  
+
+<%- include ../partials/footer.ejs %>
+  
+
+
+
+
+
