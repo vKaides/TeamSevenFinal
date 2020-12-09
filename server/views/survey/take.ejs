@@ -1,0 +1,341 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+<!-- Content for the Add Survey Page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-11">
+            <fieldset>
+                <h1><%= title %></h1>
+            </fieldset>
+            <fieldset>
+                <legend><b> Survey Details:</b></legend>
+                <table>
+                    <!-- For Surveyor -->
+                    <tr>
+                        <td><b>Surveyor:</b></td>
+                        <td>
+                            <input
+                            style="width:500px"
+                            class="form-control"
+                            id="surveyorResponseTextField"
+                            type="text"
+                            name="SurveyorResponse"
+                            value="<%= survey.Surveyor %>"
+                            readonly>
+                        </td>
+                    </tr>
+                    <!-- For Name of the Survey -->
+                    <tr>
+                        <td><b>Name of the Survey:</b></td>
+                        <td>
+                            <input
+                            type="text"
+                            style="width:500px"
+                            class="form-control"
+                            id="nameResponseTextField"
+                            name="NameResponse"
+                            value="<%= survey.Name %>"
+                            readonly>
+                        </td>
+                    </tr>
+                    <!-- For Description -->
+                    <tr>
+                        <td><b>Description:</td>
+                        <td>
+                            <input
+                            type="text"
+                            style="width:500px"
+                            class="form-control"
+                            id="descriptionResponseTextField"
+                            name="DescriptionResponse"
+                            value="<%= survey.Description %>"
+                            required
+                            readonly>
+                        </td>   
+                    </tr>
+                    <!-- For Publication -->
+                    <tr>
+                        <td><b>Publication Date:</b></td>
+                        <td>
+                            <input
+                            type="text"
+                            style="width:500px"
+                            class="form-control"
+                            id="publishedResponseTextField"
+                            value="<%= survey.Published %>"
+                            name="PublishedResponse"
+                            required
+                            readonly>
+                        </td>  
+                    </tr>
+                    <!-- For the Date Taken a survey -->
+                    <tr>
+                        <td><b>Date Taken:</b></td>
+                        <td><input 
+                            type="text" 
+                            style="width:500px"
+                            class="form-control" 
+                            id="dateTakenTextField"
+                            placeholder="(Today's Date)"
+                            name="DateTaken"                   
+                            required 
+                            readonly>
+                        </td>
+                    </tr>
+                </table>              
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Please proceed to the survey</legend>
+                <form class="form" method="POST" >                         
+                    <table>
+                        <div id="tableHeaders">
+                            <!-- Table Headers -->
+                            <tr>
+                                <th>No.</th>
+                                <th>Questions</th>
+                                <th>Answers</th>
+                            </tr>
+                        </div>
+                    
+                        <div id="row1">
+                            <!-- Row 1 -->
+                            <tr>
+                                <td>
+                                    1:
+                                </td>
+                                <td>
+                                    <input 
+                                    style="width:500px"
+                                    class="form-control"
+                                    id="question1TextField"
+                                    type="text"
+                                    name="Q1"                                   
+                                    value="<%= survey.Question1 %>"
+                                    readonly>
+                                </td>
+                                <td>
+                                    <input 
+                                    style="width:500px"
+                                    type="text" 
+                                    class="form-control" 
+                                    id="answer1TextField"
+                                    placeholder="Please write your answer"
+                                    name="Answer1"
+                                    required>
+                                </td>
+                            </tr>
+                        </div>
+
+                        <div id="row2">
+                            <!-- Row 2 -->
+                            <tr>
+                                <td>
+                                    2:
+                                </td>
+                                <td>         
+                                    <input 
+                                    style="width:500px"
+                                    class="form-control"
+                                    id="question2TextField"
+                                    type="text"
+                                    name="Q2"
+                                    readonly
+                                    value="<%= survey.Question2 %>"
+                                    >
+                                </td>
+                                </td>
+                                <td>
+                                    <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="question2TextField"
+                                    placeholder="Please write your answer"
+                                    name="Answer2"
+                                    required>
+                                </td>
+                            </tr>
+                        </div>
+
+                        <div id="row3">
+                            <!-- Row 3 -->
+                            <tr>
+                                <td>
+                                    3:
+                                </td>
+                                <td>
+                                    <input 
+                                    style="width:500px"
+                                    class="form-control"
+                                    id="question3TextField"
+                                    type="text"
+                                    name="Q3"                             
+                                    value="<%= survey.Question3 %>"
+                                    readonly>
+                                </td>
+                                </td>
+                                <td>
+
+                                    <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="question3TextField"
+                                    placeholder="Please write your answer"
+                                    name="Answer3"
+                                    required>
+                                </td>
+                            </tr>
+                        </div>
+                        <div id="row4">
+                            <!-- Row 4 -->
+                            <tr>
+                                <td>
+                                    4: 
+                                </td>
+                                <td>
+                                    <input 
+                                    style="width:500px"
+                                    class="form-control"
+                                    id="question4TextField"
+                                    type="text"
+                                    name="Q4"
+                                    value="<%= survey.Question4 %>"
+                                    readonly>
+                                </td>
+                                </td>
+                                <td>
+                                    <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="question4TextField"
+                                    placeholder="Please write your answer"
+                                    name="Answer4"
+                                    required>
+                                </td>
+                            </tr>
+                        </div>
+                        <!-- Row 5 -->
+                        <tr>
+                            <td>
+                                5: 
+                            </td>
+                            <td>
+                                <input 
+                                    style="width:500px"
+                                    class="form-control"
+                                    id="question5TextField"
+                                    type="text"
+                                    name="Q5"
+                                    value="<%= survey.Question5 %>"
+                                    readonly>
+                                </td>
+                            </td>
+                            <td>
+                                <input 
+                                type="text" 
+                                class="form-control" 
+                                id="question5TextField"
+                                placeholder="Please write your answer"
+                                name="Answer5"
+                                required>
+                            </td>
+                        </tr>
+                        <!-- Row 6 -->
+                        <tr>
+                            <td>
+                                6:
+                            </td>
+                            <td>
+                                <input 
+                                style="width:500px"
+                                class="form-control"
+                                id="question6TextField"
+                                type="text"
+                                name="Q6"
+                                value="<%= survey.Question6 %>"
+                                readonly>
+                            </td>
+                            <td>
+                                <input 
+                                type="text" 
+                                class="form-control" 
+                                id="question6TextField"
+                                placeholder="Please write your answer"
+                                name="Answer6"
+                                required>
+                            </td>
+                        </tr>
+                        <!-- Row 7 -->
+                        <tr>
+                            <td>
+                                7:
+                            </td>
+                            <td>
+                                <input 
+                                style="width:500px"
+                                class="form-control"
+                                id="question7TextField"
+                                type="text"
+                                name="Q7"
+                                value="<%= survey.Question7 %>"
+                                readonly>
+                            </td>
+                            <td>
+                                <input 
+                                type="text" 
+                                class="form-control" 
+                                id="question7TextField"
+                                placeholder="Please write your answer"
+                                name="Answer7"
+                                required>
+                            </td>
+                        </tr>
+                        <!-- Row 8 -->
+                        <tr>
+                            <td>
+                                8:
+                            </td>
+                            <td>
+                                <input 
+                                style="width:500px"
+                                class="form-control"
+                                id="question8TextField"
+                                type="text"
+                                name="Q8"
+                                value="<%= survey.Question8 %>"
+                                readonly>
+                            </td>
+                            <td>
+                                <input 
+                                type="text" 
+                                class="form-control" 
+                                id="question8TextField"
+                                placeholder="Please write your answer"
+                                name="Answer8"
+                                required>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <br>
+                <!-- Fieldsets for buttons -->
+                <fieldset>
+                    <!-- Button to submit the Survey -->
+                    <button href="/survey-list/done" class="btn btn-primary" type="submit" title="Click to submit response">
+                        <i class="fas fa-edit"></i> Submit
+                    </button>
+                    <!-- Button to cancel the submission of the survey -->
+                    <a href="/survey-list" class="btn btn-warning" title="Click to cancel response submission">
+                        <i class="fas fa-undo"></i> Cancel
+                    </a>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ../partials/bottom_nav.ejs %>
+
+<%- include ../partials/footer.ejs %>

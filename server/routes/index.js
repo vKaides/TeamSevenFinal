@@ -6,18 +6,12 @@ Purpose: Team Project - Survey Site
 */ 
 let express = require('express');
 let router = express.Router();
-let indexController = require('../controller/index');
+let indexController = require('../controllers/index');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('home', 
-  { title: 'Home'});
-});
+router.get('/', indexController.displayHomePage);
 
 /* GET home page. */
-router.get('/home', function(req, res, next) {
-  res.render('home', 
-  { title: 'Home'});
-});
+router.get('/home', indexController.displayHomePage);
 /*Get Route for Displaying Login page */
 router.get('/login', indexController.displayLoginPage);
 /*Post Route for Processing Login page*/

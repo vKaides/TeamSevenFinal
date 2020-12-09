@@ -13,21 +13,36 @@
 <div class="container">
     <div class="row">
         <div class="offset-md-1 col-md-11">
-            <h1><%= title %></h1>
+            <h1><%= title %> and Questions</h1>
             <form class="form" method="POST">
-                <!-- Text Field for Name -->
+                
+                <!-- Text Field for Surveyor -->
+                <!-- Default value added and disaled  -->
                 <div class="form-group">
                     <label for="nameTextField">Name of Surveyor</label>
                     <input 
                     type="text" 
                     class="form-control" 
+                    id="surveyorTextField"
+                    name="Surveyor"
+                    value="<%= displayName %>"
+                    required
+                    readonly>
+                </div>
+
+                <!-- Text Field for Name  -->
+                <div class="form-group">
+                    <label for="nameTextField">Name of the Survey</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
                     id="nameTextField"
-                    placeholder="Enter your Name"
+                    placeholder="Enter the name of the Survey"
                     name="Name"
                     required>
                 </div>
 
-                <!-- Text Field for Desceription -->
+                <!-- Text Field for Description -->
                 <div class="form-group">
                     <label for="descriptionTextField">Description</label>
                     <textarea 
@@ -39,17 +54,127 @@
                     required></textarea>
                 </div>
 
-                <!-- Text Field for Published Date -->
+                <!-- Text Field for Published Date type has been change by Yusuf  as date -->
                 <div class="form-group">
                     <label for="publishedTextField">Published Date</label>
                     <input 
-                    type="text" 
+                    type="date" 
                     class="form-control" 
                     id="publishedTextField"
                     placeholder="Enter the Published Date(Today's Date)"
-                    name="Published"
+                    name="Published"                   
+                    required 
+                    readonly>
+                </div>
+
+                <!-- Text Field for Start Date type has been change by Yusuf  as date-->
+                <div class="form-group">
+                    <label for="startTextField">Start Date</label>
+                    <input 
+                    type="date" 
+                    class="form-control" 
+                    id="startTextField"
+                    placeholder="Enter the Start Date"
+                    name="Start"
                     required>
                 </div>
+
+                <!-- Text Field for End Date type has been change by Yusuf as date-->
+                <div class="form-group">
+                    <label for="endTextField">End Date</label>
+                    <input 
+                    type="date" 
+                    class="form-control" 
+                    id="endTextField"
+                    placeholder="Enter the End Date"
+                    name="End"
+                    required>
+                </div>
+                
+                <!-- Div to contain the questions -->
+                <div>
+                    <!-- Text Field for Question 1 -->               
+                    <label id="question1" for="question1">Question 1</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question1TextField"
+                    placeholder="Please write a question"
+                    name="Question1"
+                    required>
+
+                    <!-- Text Field for Question 2 -->               
+                    <label id="question2" for="question2">Question 2</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question2TextField"
+                    placeholder="Please write a question"
+                    name="Question2"
+                    required>
+
+                    <!-- Text Field for Question 3 -->               
+                    <label id="question3" for="question3">Question 3</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question3TextField"
+                    placeholder="Please write a question"
+                    name="Question3"
+                    required>
+
+                    <!-- Text Field for Question 4 -->               
+                    <label id="question4" for="question4">Question 4</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question4TextField"
+                    placeholder="Please write a question"
+                    name="Question4"
+                    required>
+
+                    <!-- Text Field for Question 5 -->               
+                    <label id="question5" for="question5">Question 5</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question5TextField"
+                    placeholder="Please write a question"
+                    name="Question5"
+                    required>
+
+                    <!-- Text Field for Question 6-->               
+                    <label id="question6" for="question6">Question 6</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question6TextField"
+                    placeholder="Please write a question"
+                    name="Question6"
+                    required>
+
+                    <!-- Text Field for Question 7 -->               
+                    <label id="question7" for="question7">Question 7</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question7TextField"
+                    placeholder="Please write a question"
+                    name="Question7"
+                    required>
+
+                    <!-- Text Field for Question 8-->               
+                    <label id="question8" for="question8">Question 8</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question8TextField"
+                    placeholder="Please write a question"
+                    name="Question8"
+                    required>
+                </div>
+                
+
                 <!-- Button to submit the Survey -->
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> Submit
@@ -58,7 +183,9 @@
                 <a href="/survey-list" class="btn btn-warning">
                     <i class="fas fa-undo"></i> Cancel
                 </a>
+
             </form>
+            
         </div>
     </div>
 </div>
@@ -67,4 +194,3 @@
 <%- include ../partials/bottom_nav.ejs %>
 
 <%- include ../partials/footer.ejs %>
-

@@ -14,20 +14,33 @@
         <div class="offset-md-1 col-md-11">
             <h1><%= title %></h1>
             <form class="form" method="POST">
-                <!-- Text Field for Name -->
+                <!-- Text Field for Surveyor -->
                 <div class="form-group">
                     <label for="nameTextField">Name of Surveyor</label>
                     <input 
                     type="text" 
                     class="form-control" 
+                    id="surveyorTextField"
+                    name="Surveyor"
+                    value="<%= displayName %>"
+                    required
+                    readonly>
+                </div>
+
+                <!-- Text Field for the Name of the Survey -->
+                <div class="form-group">
+                    <label for="nameTextField">Name of the Survey</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
                     id="nameTextField"
-                    placeholder="Enter your Name"
+                    placeholder="Enter the name of the survey"
                     name="Name"
                     value="<%= survey.Name %>"
                     required>
                 </div>
-
-                <!-- Text Field for Desceription -->
+                
+                <!-- Text Field for Description -->
                 <div class="form-group">
                     <label for="descriptionTextField">Description</label>
                     <textarea 
@@ -49,6 +62,126 @@
                     placeholder="Enter the Published Date(Today's Date)"
                     name="Published"
                     value="<%= survey.Published %>"
+                    required
+                    readonly>
+                </div>
+
+                <!-- Text Field for Start Date -->
+                <div class="form-group">
+                    <label for="startTextField">Start Date</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="startTextField"
+                    placeholder="Enter the Start Date"
+                    name="Start"
+                    value="<%= survey.Start %>"
+                    required
+                    readonly>
+                </div>
+
+                <!-- Text Field for End Date -->
+                <div class="form-group">
+                    <label for="endTextField">End Date</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="endTextField"
+                    placeholder="Enter the End Date"
+                    name="End"
+                    value="<%= survey.End %>"
+                    required
+                    readonly>
+                </div>
+                
+                <!-- Div to contain the questions -->
+                <div>
+                    <!-- Text Field for Question 1 -->               
+                    <label id="question1" for="question">Question 1</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question1TextField"
+                    placeholder="Please write a question"
+                    name="Question1"
+                    value="<%= survey.Question1 %>"
+                    required>
+
+                    <!-- Text Field for Question 2 -->               
+                    <label id="question2" for="question">Question 2</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question2TextField"
+                    placeholder="Please write a question"
+                    name="Question2"
+                    value="<%= survey.Question2 %>"
+                    required>
+
+                    <!-- Text Field for Question 3 -->               
+                    <label id="question3" for="question">Question 3</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question3TextField"
+                    placeholder="Please write a question"
+                    name="Question3"
+                    value="<%= survey.Question3 %>"
+                    required>
+
+                    <!-- Text Field for Question 4 -->               
+                    <label id="question4" for="question">Question 4</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question4TextField"
+                    placeholder="Please write a question"
+                    name="Question4"
+                    value="<%= survey.Question4 %>"
+                    required>
+
+                    <!-- Text Field for Question 5 -->               
+                    <label id="question5" for="question">Question 5</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question5TextField"
+                    placeholder="Please write a question"
+                    name="Question5"
+                    value="<%= survey.Question5 %>"
+                    required>
+
+                    <!-- Text Field for Question 6-->               
+                    <label id="question6" for="question">Question 6</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question6TextField"
+                    placeholder="Please write a question"
+                    name="Question6"
+                    value="<%= survey.Question6 %>"
+                    required>
+
+                    <!-- Text Field for Question 7 -->               
+                    <label id="question7" for="question">Question 7</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question7TextField"
+                    placeholder="Please write a question"
+                    name="Question7"
+                    value="<%= survey.Question7 %>"
+                    required>
+
+                    <!-- Text Field for Question 8-->               
+                    <label id="question8" for="question">Question 8</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="question8TextField"
+                    placeholder="Please write a question"
+                    name="Question8"
+                    value="<%= survey.Question8 %>"
                     required>
                 </div>
 
@@ -68,4 +201,3 @@
 <%- include ../partials/bottom_nav.ejs %>
 
 <%- include ../partials/footer.ejs %>
-

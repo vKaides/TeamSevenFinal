@@ -1,141 +1,87 @@
-
+/*
+Author: Author: Hong Viet
+Team: Team Seven
+Course: COMP229 - Fall 2020
+Purpose: Team Project - Survey Site
+*/ 
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-const book = require('../models/survey');
+
 let passport = require('passport');
+
+let surveyController = require('../controllers/survey');
+
+// Helper function for guard purposes 
+function requireAuth(req, res, next) 
+{
+    // Checks if the user is logged in
+
+    // If not logged in -> login
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    // If logged in -> continue
+    next();
+}
+
 // Connect to our surveyModel (Schema)
 let Survey = require('../models/survey');
 
 
+/*-------------------------------------------------------------*/
 
-
-
+// Home Page
 
 /* GET Route for the Survey List page -- READ Operation */ 
-router.get('/', (req, res, next) => {
-    Survey.find((err, surveyList) => {
-        if(err)
-        {
-            return console.error(err);
-        }
-        else
-        {
-            res.render('survey/list', 
-            {
-                title: 'Survey List', 
-                SurveyList: surveyList
-            });
-            //console.log(SurveyList);
-        }
-    })
-});
+router.get('/', surveyController.displaySurveyList);
+
+/*-------------------------------------------------------------*/
+
+// Add Survey Page
 
 /* GET Route for displaying the Add Survey page -- CREATE Operation */ 
-router.get('/add', (req, res, next) => {
-    res.render('survey/add', 
-    {
-        title: 'Add Survey'
-    });
-})
-
+router.get('/add', requireAuth, surveyController.displayAddPage);
 
 /* POST Route for processing the Add Survey page -- CREATE Operation */ 
-router.post('/add', (req, res, next) => {
-    let newSurvey = Survey({
-        "Name": req.body.Name,
-        "Description": req.body.Description,
-        "Published": req.body.Published,
-        "Start": req.body.Start,
-        "End": req.body.End
-    });
+router.post('/add', requireAuth, surveyController.processAddPage);
 
-    Survey.create(newSurvey, (err, Survey) => {
-        if(err)
-        {
-            console.log(err);
-            res.end(err);
-        }
-        else
-        {
-            // Refresh the Survey List
-            res.redirect('/survey-list');
-        }
+/*-------------------------------------------------------------*/
 
-    });
-})
+// Take Survey Page
 
+/* GET Route for displaying the Take Survey page -- CREATE Operation */ 
+router.get('/take/:id' , surveyController.displayTakeSurveyPage);
+
+/* POST Route for processing the Take Survey page -- CREATE Operation */ 
+router.post('/take/:id', surveyController.processTakeSurveyPage);
+
+/*-------------------------------------------------------------*/
+
+// Edit Survey Page
 
 /* GET Route for displaying the Edit Survey page -- UPDATE Operation */ 
-router.get('/edit/:id', (req, res, next) => {
-    let id = req.params.id;
-
-    // Find the object to edit by its id
-    Survey.findById(id, (err, surveyToEdit) => {
-        if(err)
-        {
-            console.log(err);
-            res.end(err);
-        }
-        else
-        {
-            // Show the edit page
-            res.render('survey/edit', 
-            {
-                title: 'Edit Survey',
-                survey: surveyToEdit
-            })
-        }
-    })
-
-})
-
+router.get('/edit/:id', requireAuth, surveyController.displayEditPage);
 
 /* POST Route for processing the Edit Survey page -- UPDATE Operation */ 
-router.post('/edit/:id', (req, res, next) => {
-    let id = req.params.id;
+router.post('/edit/:id', requireAuth, surveyController.processEditPage);
 
-    let updateSurvey = Survey({
-        "_id": id,
-        "Name": req.body.Name,
-        "Description": req.body.Description,
-        "Published": req.body.Published,
-        "Start": req.body.Start,
-        "End": req.body.End
-    })
 
-    Survey.updateOne({_id: id}, updateSurvey, (err) => {
-        if(err)
-        {
-            console.log(err);
-            res.end(err);
-        }
-        else
-        {
-            // Refresh the Survey List
-            res.redirect('/survey-list');
-        }
-    });
-})
+/*-------------------------------------------------------------*/
 
+// Done Taking a Survey Page
+
+/* GET Route for displaying the Take Survey page -- CREATE Operation */ 
+router.get('/done', surveyController.displayDoneSurveyPage);
+
+
+/*-------------------------------------------------------------*/
+
+// Survey Page Deletions
 
 /* GET Route to perform Survey Deletion -- DELETE Operation */ 
-router.get('/delete/:id', (req, res, next) => {
-    let id = req.params.id;
-
-    Survey.remove({_id: id}, (err) => {
-        if(err)
-        {
-            console.log(err);
-            res.end(err);
-        }
-        else
-        {
-            // Refresh the Survey List
-            res.redirect('/survey-list');
-        }
-    });
-})
+router.get('/delete/:id', requireAuth, surveyController.performDelete);
 
 
 module.exports = router;
