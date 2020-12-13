@@ -44,11 +44,7 @@
                         <td class="text-center col-2"><%= SurveyList[count].Published %></td>
                         <td class="text-center col-2"><%= SurveyList[count].Start %></td>
                         <td class="text-center col-2"><%= SurveyList[count].End %></td> 
-                        <!-- Button for Take Survey -->
-                        <td class="text-center col-1">
-                            <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary">
-                            <i class="fas fa-user-edit"></i> Take Survey</a>
-                        </td> 
+                        
                         <!-- Button for Edit Survey -->
                         <td class="text-center col-1">
                             <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary">
@@ -58,11 +54,7 @@
                         <td class="text-center col-1">
                             <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger">
                             <i class="fas fa-trash-alt"></i> Delete Survey</a>
-                        </td>
-                        <td class="text-center col-1">
-                            <a href="/question-list/<%= SurveyList[count]._id %>" class="btn btn-primary">
-                            <i class="fas fa-user-edit"></i> add/ delete /edit questions</a>
-                        </td>                         
+                        </td>                       
                     </tr>
                   <% } %>
               </table>

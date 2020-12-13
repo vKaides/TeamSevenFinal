@@ -41,12 +41,6 @@ router.get('/add', requireAuth, surveyController.displayAddPage);
 router.post('/add', requireAuth, surveyController.processAddPage);
 
 
-/* GET Route for displaying the Take Survey page -- CREATE Operation */ 
-router.get('/take/:id' , surveyController.displayTakeSurveyPage);
-
-/* POST Route for processing the Take Survey page -- CREATE Operation */ 
-router.post('/take/:id', surveyController.processTakeSurveyPage);
-
 
 /* GET Route for displaying the Edit Survey page -- UPDATE Operation */ 
 router.get('/edit/:id', requireAuth, surveyController.displayEditPage);

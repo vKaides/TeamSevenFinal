@@ -8,74 +8,64 @@
 
 <%- include ../partials/main_nav.ejs %>
 
-    
+<!-- Content for the Add Survey Page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-11">
+            <h1><%= title %></h1>
+            <form class="form" method="POST">
+                <!-- Text Field for Name -->
+                <div class="form-group">
+                    <label for="nameTextField">Name of Surveyor</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="nameTextField"
+                    placeholder="Enter your Name"
+                    name="Name"
+                    value="<%= survey.Name %>"
+                    required>
+                </div>
 
-    <!-- Main Content -->
-    <main class="container">
-      <div class="row">
-          <div class="col-md-offset-3 col-md-6">
-              <h1><%= title %></h1>
-              <!-- Paragraph - Short Description for the Survey List -->
-              <p>Welcome to Team Se7en's survey site. You, as a user, can create, update, and delete a survey of your own.</p>
-              <!-- Button to add a survey -->
-              <a href="/survey-list/add" class="btn btn-primary" role="button">
-                <i class="fas fa-plus-circle"></i> Add a Survey</a>
-              <br>
-              <table class="table table-bordered table-striped table-hover">
-                  <!-- Header Row -->
-                  <tr>
-                      <!---->
-                      <th class="text-center col-2">Name</th> 
-                      <th class="col-6">Description</th> 
-                      <th class="text-center col-2">Published</th> 
-                      <th class="text-center col-2">Start</th> 
-                      <th class="text-center col-2">End</th> 
-                      <th class="text-center col-1"></th> 
-                      <th class="text-center col-1"></th> 
-                      <th class="text-center col-1"></th> 
-                      <th class="text-center col-1"></th> 
-                  </tr>
+                <!-- Text Field for Desceription -->
+                <div class="form-group">
+                    <label for="descriptionTextField">Description</label>
+                    <textarea 
+                    type="text" 
+                    class="form-control" 
+                    id="descriptionTextField"
+                    placeholder="Enter the Description"
+                    name="Description"
+                    required><%= survey.Description %></textarea>
+                </div>
 
-                  <!-- Repeatable Template Row -->
-                  <% for(let count = 0; count < SurveyList.length; count++) { %>
-                    <tr>
-                        <td class="text-center col-2"><%= SurveyList[count].Name %></td>
-                        <td class="text-center col-6"><%= SurveyList[count].Description %></td>
-                        <td class="text-center col-2"><%= SurveyList[count].Published %></td>
-                        <td class="text-center col-2"><%= SurveyList[count].Start %></td>
-                        <td class="text-center col-2"><%= SurveyList[count].End %></td> 
-                        <!-- Button for Take Survey -->
-                        <td class="text-center col-1">
-                            <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary">
-                            <i class="fas fa-user-edit"></i> Take Survey</a>
-                        </td> 
-                        <!-- Button for Edit Survey -->
-                        <td class="text-center col-1">
-                            <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary">
-                            <i class="fas fa-pencil-alt"></i> Edit Survey</a>
-                        </td> 
-                        <!-- Button for Delete Survey -->
-                        <td class="text-center col-1">
-                            <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger">
-                            <i class="fas fa-trash-alt"></i> Delete Survey</a>
-                        </td>
-                        <td class="text-center col-1">
-                            <a href="/question-list/<%= SurveyList[count]._id %>" class="btn btn-primary">
-                            <i class="fas fa-user-edit"></i> add/ delete /edit questions</a>
-                        </td>                         
-                    </tr>
-                  <% } %>
-              </table>
-          </div>
-      </div>
-    </main>
-    
+                <!-- Text Field for Published Date -->
+                <div class="form-group">
+                    <label for="publishedTextField">Published Date</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="publishedTextField"
+                    placeholder="Enter the Published Date(Today's Date)"
+                    name="Published"
+                    value="<%= survey.Published %>"
+                    required>
+                </div>
+
+                <!-- Button to submit the Survey -->
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit
+                </button>
+                <!-- Button to cancel the submission of the survey -->
+                <a href="/survey-list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
 <%- include ../partials/bottom_nav.ejs %>
 
 <%- include ../partials/footer.ejs %>
-
-
-
-
-
 
