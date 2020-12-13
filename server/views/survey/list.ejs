@@ -5,7 +5,11 @@
     Purpose: Team Project - Survey Site  
 -->
 <%- include ../partials/header.ejs %>
+
 <%- include ../partials/main_nav.ejs %>
+
+    
+
     <!-- Main Content -->
     <main class="container">
       <div class="row">
@@ -13,118 +17,52 @@
               <h1><%= title %></h1>
               <!-- Paragraph - Short Description for the Survey List -->
               <p>Welcome to Team Se7en's survey site. You, as a user, can create, update, and delete a survey of your own.</p>
-              <% if(typeof displayName == 'string' && displayName) { %>
               <!-- Button to add a survey -->
-              <a href="/survey-list/add" class="btn btn-primary" role="button" title="Add a survey.">
+              <a href="/survey-list/add" class="btn btn-primary" role="button">
                 <i class="fas fa-plus-circle"></i> Add a Survey</a>
-                <% } %>
               <br>
               <table class="table table-bordered table-striped table-hover">
                   <!-- Header Row -->
                   <tr>
-                        <% if(typeof displayName == 'string' && displayName) { %>
-                        <!-- Table Headers -->
-                            <th class="text-center col-2" title="Author of the survey.">Surveyor</th>
-                            <th class="text-center col-2" title="Name of the survey.">Name</th> 
-                            <th class="col-6" title="Description of the survey.">Description</th> 
-                            <th class="text-center col-2" title="Publication date of the survey.">Published</th> 
-                            <th class="text-center col-2" title="Availability of the survey">Start</th> 
-                            <th class="text-center col-2" title="Expiration date of the survey">End</th> 
-                            <th class="text-center col-1">Take Survey</th> 
-                            <th class="text-center col-1">Edit Survey</th> 
-                            <th class="text-center col-1">Delete Survey</th> 
-                        <% } else { %>
-                            <th class="text-center col-2" title="Author of the survey.">Surveyor</th>
-                            <th class="text-center col-2" title="Name of the survey.">Name</th> 
-                            <th class="col-6" title="Description of the survey.">Description</th> 
-                            <th class="text-center col-2" title="Publication date of the survey.">Published</th> 
-                            <th class="text-center col-2" title="Availability of the survey">Start</th> 
-                            <th class="text-center col-2" title="Expiration date of the survey">End</th> 
-                            <th class="text-center col-1">Take Survey</th> 
-                            <th class="text-center col-1">Edit Survey</th> 
-                            <th class="text-center col-1">Delete Survey</th> 
-                        <% } %>
+                      <!---->
+                      <th class="text-center col-2">Name</th> 
+                      <th class="col-6">Description</th> 
+                      <th class="text-center col-2">Published</th> 
+                      <th class="text-center col-2">Start</th> 
+                      <th class="text-center col-2">End</th> 
+                      <th class="text-center col-1"></th> 
+                      <th class="text-center col-1"></th> 
+                      <th class="text-center col-1"></th> 
+                      <th class="text-center col-1"></th> 
                   </tr>
 
                   <!-- Repeatable Template Row -->
                   <% for(let count = 0; count < SurveyList.length; count++) { %>
                     <tr>
-                    
-                         <!-- Surveyor matching with display name so that the user only edit or delete their own survey    let currentDate = new Date(); if()  -->
-                        <% if( SurveyList[count].Surveyor === displayName ) {  let currentDate = new Date(); %>
-                            <td class="text-center col-2"><%= SurveyList[count].Surveyor %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].Name %></td>
-                            <td class="text-center col-6"><%= SurveyList[count].Description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].Published %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].Start %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].End %></td>
-                           
-                            <% if(SurveyList[count].Start<=currentDate && SurveyList[count].End>=currentDate ){ %>
-                            <td class="text-center col-1">
-                            <a href="/survey-list/take/<%= SurveyList[count]._id %>" class="btn btn-primary" title="Take a survey.">
+                        <td class="text-center col-2"><%= SurveyList[count].Name %></td>
+                        <td class="text-center col-6"><%= SurveyList[count].Description %></td>
+                        <td class="text-center col-2"><%= SurveyList[count].Published %></td>
+                        <td class="text-center col-2"><%= SurveyList[count].Start %></td>
+                        <td class="text-center col-2"><%= SurveyList[count].End %></td> 
+                        <!-- Button for Take Survey -->
+                        <td class="text-center col-1">
+                            <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary">
                             <i class="fas fa-user-edit"></i> Take Survey</a>
-                            </td> 
-
-                            <% }else{ %>
-                           
-                            <!-- Button for Take Survey -->
-                           
-                            <td class="text-center col-2">This survey is not available yet or it has already expired </td>
-                            <% } %>
-                            <!-- Button for Edit Survey -->
-                            <td class="text-center col-1">
-                                <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary" title="Edit Survey details and questions.">
-                                <i class="fas fa-pencil-alt"></i> Edit Survey</a>
-                            </td> 
-
-                            <!-- Button for Delete Survey -->
-                            <td class="text-center col-1">
-                                <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger" title="Delete a survey.">
-                                <i class="fas fa-trash-alt"></i> Delete Survey</a>
-                            </td>   
-
-                        <% } else { let currentDate = new Date(); %>       
-                            <td class="text-center col-2"><%= SurveyList[count].Surveyor %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].Name %></td>
-                            <td class="text-center col-6"><%= SurveyList[count].Description %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].Published %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].Start %></td>
-                            <td class="text-center col-2"><%= SurveyList[count].End %></td> 
-                             <% if(SurveyList[count].Start<=currentDate && SurveyList[count].End>=currentDate ){ %>
-                            <!-- Button for Take Survey -->
-                             <td class="text-center col-1">
-                                <a href="/survey-list/take/<%= SurveyList[count]._id %>" class="btn btn-primary" title="Take a survey.">
-                                <i class="fas fa-user-edit"></i> Take Survey</a>
-                            </td> 
-                            <!-- Button for Edit Survey -->
-                            <td class="text-center col-1">
-                                <button href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary" title="This button is disabled for security purposes" disabled>
-                                <i class="fas fa-pencil-alt"></i> Edit Survey</button>
-                            </td> 
-
-                            <!-- Button for Delete Survey -->
-                            <td class="text-center col-1">
-                                <button href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger" title="This button is disabled for security purposes" disabled>
-                                <i class="fas fa-trash-alt"></i> Delete Survey</button>
-                            </td> 
-                            <% }else{ %>
-                            
-                            <td class="text-center col-2">This survey is not available yet or it has already expired
-                            </td>
-                            <!-- Button for Edit Survey -->
-                            <td class="text-center col-1">
-                                <button href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary" title="This button is disabled for security purposes" disabled>
-                                <i class="fas fa-pencil-alt"></i> Edit Survey</button>
-                            </td> 
-
-                            <!-- Button for Delete Survey -->
-                            <td class="text-center col-1">
-                                <button href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger" title="This button is disabled for security purposes" disabled>
-                                <i class="fas fa-trash-alt"></i> Delete Survey</button>
-                            </td> 
-                            <% } %>
-                           
-                        <% } %>   
+                        </td> 
+                        <!-- Button for Edit Survey -->
+                        <td class="text-center col-1">
+                            <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary">
+                            <i class="fas fa-pencil-alt"></i> Edit Survey</a>
+                        </td> 
+                        <!-- Button for Delete Survey -->
+                        <td class="text-center col-1">
+                            <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> Delete Survey</a>
+                        </td>
+                        <td class="text-center col-1">
+                            <a href="/question-list/<%= SurveyList[count]._id %>" class="btn btn-primary">
+                            <i class="fas fa-user-edit"></i> add/ delete /edit questions</a>
+                        </td>                         
                     </tr>
                   <% } %>
               </table>

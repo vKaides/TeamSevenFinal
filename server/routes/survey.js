@@ -30,16 +30,9 @@ function requireAuth(req, res, next)
 let Survey = require('../models/survey');
 
 
-/*-------------------------------------------------------------*/
-
-// Home Page
-
 /* GET Route for the Survey List page -- READ Operation */ 
 router.get('/', surveyController.displaySurveyList);
 
-/*-------------------------------------------------------------*/
-
-// Add Survey Page
 
 /* GET Route for displaying the Add Survey page -- CREATE Operation */ 
 router.get('/add', requireAuth, surveyController.displayAddPage);
@@ -47,9 +40,6 @@ router.get('/add', requireAuth, surveyController.displayAddPage);
 /* POST Route for processing the Add Survey page -- CREATE Operation */ 
 router.post('/add', requireAuth, surveyController.processAddPage);
 
-/*-------------------------------------------------------------*/
-
-// Take Survey Page
 
 /* GET Route for displaying the Take Survey page -- CREATE Operation */ 
 router.get('/take/:id' , surveyController.displayTakeSurveyPage);
@@ -57,28 +47,12 @@ router.get('/take/:id' , surveyController.displayTakeSurveyPage);
 /* POST Route for processing the Take Survey page -- CREATE Operation */ 
 router.post('/take/:id', surveyController.processTakeSurveyPage);
 
-/*-------------------------------------------------------------*/
-
-// Edit Survey Page
 
 /* GET Route for displaying the Edit Survey page -- UPDATE Operation */ 
 router.get('/edit/:id', requireAuth, surveyController.displayEditPage);
 
 /* POST Route for processing the Edit Survey page -- UPDATE Operation */ 
 router.post('/edit/:id', requireAuth, surveyController.processEditPage);
-
-
-/*-------------------------------------------------------------*/
-
-// Done Taking a Survey Page
-
-/* GET Route for displaying the Take Survey page -- CREATE Operation */ 
-router.get('/done', surveyController.displayDoneSurveyPage);
-
-
-/*-------------------------------------------------------------*/
-
-// Survey Page Deletions
 
 /* GET Route to perform Survey Deletion -- DELETE Operation */ 
 router.get('/delete/:id', requireAuth, surveyController.performDelete);

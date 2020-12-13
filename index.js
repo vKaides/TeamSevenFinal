@@ -12,7 +12,7 @@ Purpose: Team Project - Survey Site
  */
 
 var app = require('./server/config/app');
-var debug = require('debug')('comp229-surveysite-viet---copy-2---copy:server');
+var debug = require('debug')('comp229-surveysite-kenneth---copy-2---copy:server');
 var http = require('http');
 
 /**
